@@ -9,7 +9,18 @@
 //
 
 //  variables // global scope
-
+var lettersU = ["A","B","C","D","E","F","G"];
+  var lettersL = "abcdf"
+  var numbers = "0123456789"
+  var specials = "!@#$%^&*()_+="
+  var randomUpperCase;
+  var len;
+  var upp;
+  var low;
+  var num;
+  var spe;
+  var password = ""
+  var total = ""
 
 // fucntion   // scope function 
 
@@ -20,70 +31,71 @@
 //asing the user the options 
 
 function generatePassword() {
-  var lettersU = "ABCDEFG"
-  var lettersL = "abcdf"
-  var numbers = "0123456789"
-  var specials = "!@#$%^&*()_+="
-  var len;
-  var upp;
-  var low;
-  var num;
-  var spe;
-  var password = ""
-  var total = ""
+  
   //prompt  questions 
 
-  len = prompt("how many chracters")
+  var len = prompt("how many chracters")
+  if (len < 8 || len > 128) {
+    alert("please choose a length between 8 and 128");
+    generatePassword();
+  }
   console.log(len)
-  upp = confirm("do you want uppercase ok for yes cancel for no")
+  var upp = confirm("do you want uppercase ok for yes cancel for no")
   console.log(upp)
-  low = confirm("do you want lowercase ok for yes cancel for no")
+  var low = confirm("do you want lowercase ok for yes cancel for no")
   console.log(low)
-  num = confirm("do you want numbers ok for yes cancel for no")
+  var num = confirm("do you want numbers ok for yes cancel for no")
   console.log(num)
-  spe = confirm("do you want special characters ok for yes cancel for no")
+  var spe = confirm("do you want special characters ok for yes cancel for no")
   console.log(spe)
 
+  if(upp == false && low == false && num == false && spe == false)
+  {
 
-  if (upp) {
-    var index = Math.floor(Math.random * lettersU.length) /// 
-    password = password + lettersU[index]    //  "" + E  //true
+  }
+  // need to check if all the inputs are false. if all of them are false, then alert("you need to pick at least one category")
+//and then call thegeneratepassword function. 
+// len -> 
+while(password.length <= len){
+    if (upp) {
+    randomUpperCase = lettersU[Math.floor(Math.random() * lettersU.length)]
+    console.log("randomUppercase letter" + randomUpperCase);
+    password = password + randomUpperCase    //  "" + E  //true
     total = total + lettersU
     //choose a letter for lettersU  (random)
   }
-  console.log(index)
+  
   if (low) {
-    var index = Math.floor(Math.random * lettersL.length) ///
+    var index = Math.floor(Math.random() * lettersL.length) ///
     password = password + lettersL[index]    //  "" + g   "Eg"  // false
     total = total + lettersL
     //choose a letter for lettersU  (random)
   }
   if (num) {
-    var index = Math.floor(Math.random * numbers.length) ///
+    var index = Math.floor(Math.random() * numbers.length) ///
     password = password + numbers[index]    //  "" + 3  "Eg3"  //true
     total = total + numbers
     //choose a letter for lettersU  (random)
   }
   if (spe) {
-    var index = Math.floor(Math.random * specials.length) ///
+    var index = Math.floor(Math.random() * specials.length) ///
     password = password + specials[index]    //  "" + :   "Eg3:" //false
     total = total + specials
     //choose a letter for lettersU  (random)
   }
+}
 
-  console.log("password:", password)
-  console.log("total: ", total)
   // total is going to have all the lettersU and all the numbers
   // 6 char but just upp and numbers
   // build the rest of the password  ( if user want 8 characters you will need to add as many as the diffrence between the pasword.lenght and the len)
   //loop for 6 characters 
   //var index = Math.floor ///
   // password = password + total[index]  
-
-
-
-  console.log(password);
+  console.log("password" + password);
+  return password;
+  
 }
+writePassword(password);
 
 // Get references to the #generate element
 var generateBtn = document.querySelector("#generate");
@@ -98,6 +110,6 @@ function writePassword() {
 }
 
 // Add event listener to generate button
-generateBtn.addEventListener("click", writePassword);
+generateBtn.addEventListener("click", generatePassword);
 
 
