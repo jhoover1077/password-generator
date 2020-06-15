@@ -114,7 +114,7 @@ console.log("possiblecharacter " + possiblecharacter)
 for (var i = 0; i < total; i++) {
   result[i] = total[i]
 }
-result.join('')
+console.log(result.join(" "))
 console.log("line 119 " + result)
 
   // total is going to have all the lettersU and all the numbers
@@ -124,7 +124,7 @@ console.log("line 119 " + result)
   //var index = Math.floor ///
   // password = password + total[index]  
   console.log(result);
-  return result;
+  return (result.join(" "));
 }
 
 function randomize(char) {
